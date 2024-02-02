@@ -1,5 +1,5 @@
 import express from 'express'
-// import { connect } from 'http2';
+import cors from 'cors'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import userRoutes from './routes/user.route.js'
@@ -15,6 +15,8 @@ mongoose.connect(process.env.MONGO)
 });
 
 const app =express();
+
+app.use(cors());
 
 app.use(express.json());
 

@@ -11,15 +11,16 @@ export const signup= async (req,res,next)=>{
 
     const hashedPassword=bcryptjs.hashSync(password,10);
 
-     const newUser= new User({
+    const newUser= new User({
         username,
         email,
         password:hashedPassword
-     });
+    });
 
-     try{
-         await newUser.save();
-         res.json('Signup successful')
+
+    try{
+        await newUser.save();
+        res.json('Signup successful')
     }catch(error){
         next(error);
     }
