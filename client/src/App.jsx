@@ -1,7 +1,7 @@
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import About from './pages/About'
 import Home from './pages/Home'
-import Signin from './pages/Signin'
+import SignIn from './pages/Signin'
 import SignUp from './pages/SignUp'
 import Dashboard from './pages/Dashboard'
 import Projects from './pages/Projects'
@@ -14,6 +14,7 @@ import UpdatePost from './pages/UpdatePost'
 import PostPage from './pages/PostPage'
 import ScrollToTop from './components/ScrollToTop'
 import Search from './pages/Search'
+
 function App() {
   return (
    <BrowserRouter>
@@ -22,7 +23,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/about' element={<About/>}/>
-      <Route path='/sign-in' element={<Signin/>}/>
+      <Route path='/sign-in' element={<SignIn/>}/>
       <Route path='/sign-up' element={<SignUp/>}/>
       <Route path='/search' element={<Search/>}/>
       <Route element={<PrivateRoute/>}>
