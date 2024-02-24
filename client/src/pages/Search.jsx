@@ -1,5 +1,4 @@
 import { Button, Select, TextInput } from 'flowbite-react'
-import { set } from 'mongoose';
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import PostCard from '../components/PostCard';
@@ -17,26 +16,7 @@ export default function Search() {
     const location =useLocation();
     const navigate =useNavigate();
      
-    const handleShowMore = async() =>{
-        const numberOfPosts = posts.length;
-        const startIndex = numberOfPosts;
-        const urlParams = new URLSearchParams(location.search);
-        urlParams.set('startIndex',startIndex);
-        const searchQuery = urlParams.toString();
-        const res = await fetch(`/api/post/getposts?${searchQuery}`);
-        if(!res.ok){
-            return;
-        }
-        if(res.ok){
-            const data = await res.json();
-            setPosts([...posts, data.posts]);
-            if(data.posts.length ===9){
-                setShowmore(true);
-            }else{
-                showmore(false);
-            }
-        }
-    }
+    
 
     useEffect(() =>{
         const urlParams = new URLSearchParams(location.search);
@@ -83,7 +63,7 @@ export default function Search() {
             })
         }
         if(e.target.id === 'sort'){
-            const order = e.target.value || 'desc';
+            const order = e.target.value === 'asc' ? 'asc' : 'desc';
             setSidebarData({
                 ...sidebarData,
                 sort:order
@@ -107,6 +87,27 @@ export default function Search() {
         const searchQuery= urlParams.toString();
         navigate(`/search?${searchQuery}`)
 
+    }
+
+    const handleShowMore = async() =>{
+        const numberOfPosts = posts.length;
+        const startIndex = numberOfPosts;
+        const urlParams = new URLSearchParams(location.search);
+        urlParams.set('startIndex',startIndex);
+        const searchQuery = urlParams.toString();
+        const res = await fetch(`/api/post/getposts?${searchQuery}`);
+        if(!res.ok){
+            return;
+        }
+        if(res.ok){
+            const data = await res.json();
+            setPosts([...posts, ...data.posts]);
+            if(data.posts.length ===9){
+                setShowmore(true);
+            }else{
+                setShowmore(false);
+            }
+        }
     }
   return (
     <div className='flex flex-col md:flex-row'>
@@ -141,7 +142,7 @@ export default function Search() {
                         id='category'
                     >
                         <option value='uncategorized'>Uncategorized</option>
-                        <option value='material'>Material</option>
+                        <option value='material'>Material Science</option>
                         <option value='technology'>Technology</option>
                         <option value='life'>Life</option>
                     </Select>
@@ -153,7 +154,7 @@ export default function Search() {
         </div>
         <div className='w-full'>
             <h1 className='text-3xl font-semibold sm:border-b border-gray-500 p-3 mt-5'>Post Results</h1>
-            <div className='p-7 flex flex-wrap gap-4'>
+            <div className='p-7 flex flex-wrap gap-4 justify-center'>
                 {
                     !loading && posts.length === 0 && 
                     (<p className='text-xl text-gray-500)'>No posts found.</p>)

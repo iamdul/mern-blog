@@ -18,10 +18,11 @@ export default function Home() {
     <div>
       <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto'>
         <h1 className='text-3xl font-bold lg:text-6xl'>Welcome to my Blog</h1>
-        <p className='text-gray-500 text-xs sm:text-sm'>Explore the captivating world of material science, technology, and life on my blog. 
-           Whether you're passionate about cutting-edge research, eager to stay ahead in the tech world, or simply seeking inspiration 
-          for a fulfilling life, our blog offers a rich tapestry of insights and discoveries to enrich 
-          your journey. Join us and embark on an enlightening exploration today.</p>
+        <p className='text-gray-500 text-xs sm:text-sm'>
+          Explore the captivating world of material science, technology, and life on my blog. 
+          Whether you're passionate about cutting-edge research, eager to stay ahead in the tech world, 
+          or simply seeking inspiration for a fulfilling life, our blog offers a rich tapestry of 
+          insights and discoveries to enrich your journey. Join us and embark on an enlightening exploration today.</p>
         <Link to='/search' className='text-xs sm:text-sm text-teal-500 font-bold
         hover:underline'>View all posts</Link>
       </div>
@@ -33,7 +34,7 @@ export default function Home() {
           posts && posts.length>0 && (
             <div className='flex flex-col gap-6'>
               <h2 className='text-2xl font-semibold text-center'>Recent Posts</h2>
-              <div className='flex flex-wrap gap-4 '>
+              <div className='flex flex-wrap gap-4 justify-center '>
                 {posts.map((post)=>(
                   <PostCard key={post._id} post={post}/>
                 ))}

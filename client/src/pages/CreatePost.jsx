@@ -90,7 +90,7 @@ export default function CreatePost() {
                     }}>
                         <option value="uncategorized">Select a category</option>
                         <option value="technology">Technology</option>
-                        <option value="mtscience">Material Science</option>
+                        <option value="material">Material Science</option>
                         <option value="life">Life</option>
                     </Select>
                 </div>
