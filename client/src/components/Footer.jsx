@@ -27,7 +27,6 @@ export default function FooterCom() {
                             </Footer.Link>
                             <Footer.Link
                                 href='/about'
-                                target='_blank'
                                 rel='noopener noreferrer'
                             >
                                 Dazzle's Blogs
@@ -45,7 +44,7 @@ export default function FooterCom() {
                                 GitHub
                             </Footer.Link>
                             <Footer.Link
-                                href='www.linkedin.com/in/iamdul'
+                                href='https://www.linkedin.com/in/iamdul'
                                 target='_blank'
                                 rel='noopener noreferrer'
                             >
@@ -78,7 +77,7 @@ export default function FooterCom() {
                     <Footer.Icon href='#' icon={BsFacebook}/>
                     <Footer.Icon href='#' icon={BsInstagram}/>
                     <Footer.Icon href='#' icon={BsTwitter}/>
-                    <Footer.Icon href='#' icon={BsGithub}/>
+                    <Footer.Icon href='https://github.com/iamdul' target='_blank' icon={BsGithub}/>
                     <Footer.Icon href='#' icon={BsDribbble}/>
                 </div>
             </div>
